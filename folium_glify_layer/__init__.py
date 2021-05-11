@@ -60,7 +60,7 @@ class GlifyLayer(JSCSSMixin, Layer):
         Options for L.glify object (currently a single set of options is used for all geometry types).
         e.g. { border, opacity, size, sensitivity }
 
-    color_function: str
+    color_feature_function: str
         Javascript function to override RGB color.
 
     popup: folium_glify_layer.glify_layer.Popup
@@ -102,11 +102,13 @@ class GlifyLayer(JSCSSMixin, Layer):
                 glifyOptions: {{ this.glify_options|tojson }}
             };
 
-            {%- if this.color_function is not none %}
-                options.glifyOptions.color = {{ this.color_function.strip() }};
+            {%- if this.init_scale_function is not none %}
+                var colorScaleInit = {{ this.init_scale_function.strip() }};
+                var scale = colorScaleInit();
             {%- endif %}
-            {%- if this.click_function is not none %}
-                options.glifyOptions.click = {{ this.click_function.strip() }};
+
+            {%- if this.color_feature_function is not none %}
+                options.glifyOptions.color = {{ this.color_feature_function.strip() }};
             {%- endif %}
 
             {%- if this.popup is not none %}
@@ -207,6 +209,8 @@ class GlifyLayer(JSCSSMixin, Layer):
         """)
 
     default_js = [
+        ('chroma', 
+         'https://unpkg.com/chroma-js@2.1.1/chroma.min.js'),
         ('glify-browser',
          'https://unpkg.com/leaflet.glify@3.0.2/dist/glify-browser.js'),
         ('leaflet-glify-layer',
@@ -214,7 +218,8 @@ class GlifyLayer(JSCSSMixin, Layer):
     ]
 
     def __init__(self, feature_collections, glify_options={}, 
-        color_function=None, click_function=None, popup=None, tooltip=None):
+        init_scale_function=None, color_feature_function=None, 
+        popup=None, tooltip=None):
         
         super(GlifyLayer, self).__init__()
         self._name = 'GlifyLayer'
@@ -225,8 +230,11 @@ class GlifyLayer(JSCSSMixin, Layer):
             raise ValueError('feature_collections must not be None.')
         
         self.glify_options = glify_options
-        self.color_function = color_function
-        self.click_function = click_function
+        self.color_feature_function = color_feature_function
+        self.init_scale_function = init_scale_function
+
+        if self.color_feature_function != None and self.init_scale_function is None:
+            raise ValueError('color_feature_function was provided but no init_scale_function function was provided')
     
         if popup is not None:
             assert isinstance(popup, Popup)

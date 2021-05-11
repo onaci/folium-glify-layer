@@ -19,3 +19,8 @@ jupyter lab
 ```
 
 
+## thanks
+- https://github.com/robertleeplummerjr/Leaflet.glify
+- http://bl.ocks.org/Sumbera/c6fed35c377a46ff74c3
+- https://github.com/mapbox/earcut
+- https://github.com/gka/chroma.js
