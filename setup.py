@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 # This call to setup() does all the work
 setup(
     name="folium-glify-layer",
-    version="0.2.0",
+    version="0.3.0",
     description="Folium plugin to provide fast webgl rendering for GeoJSON FeatureCollections.",
     long_description=README,
     long_description_content_type="text/markdown",
