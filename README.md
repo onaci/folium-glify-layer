@@ -11,6 +11,7 @@ pip install folium-glify-layer
 
 
 ## jupyter demo
+(or just follow the [binder link](https://binder.pangeo.io/v2/gh/onaci/folium-glify-layer/main))
 ```
 conda env create -f environment.yml
 conda activate folium-glify-example
