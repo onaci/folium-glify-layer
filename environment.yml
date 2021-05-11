@@ -1,0 +1,7 @@
+name: folium-glify-example
+channels:
+  - conda-forge
+dependencies:
+  - folium
+  - jupyterlab
+  

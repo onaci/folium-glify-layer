@@ -1,0 +1,6 @@
+.ipynb*
+build
+dist
+__pycache__
+*.egg-info
+PIP.md
