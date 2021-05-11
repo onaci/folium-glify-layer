@@ -14,7 +14,7 @@ setup(
     description="Folium plugin to provide fast webgl rendering for GeoJSON FeatureCollections.",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/danwild/folium-glify-layer",
+    url="https://github.com/onaci/folium-glify-layer",
     author="Dan Wild",
     author_email="Daniel.Wild@csiro.au",
     classifiers=[
