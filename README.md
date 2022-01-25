@@ -1,4 +1,4 @@
-# folium-glify-layer [![PyPI version](https://badge.fury.io/py/folium-glify-layer.svg)](https://badge.fury.io/py/folium-glify-layer) [![Binder](https://binder.pangeo.io/badge_logo.svg)](https://mybinder.org/v2/gh/onaci/folium-glify-layer/HEAD)
+# folium-glify-layer [![PyPI version](https://badge.fury.io/py/folium-glify-layer.svg)](https://badge.fury.io/py/folium-glify-layer) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/onaci/folium-glify-layer/HEAD)
 
 A plugin for [Folium](https://github.com/python-visualization/folium) to provide fast webgl rendering for large GeoJSON FeatureCollections (currently limited to polygons, lines and points).
 
